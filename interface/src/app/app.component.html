@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="scan">
+    <button (click)="scan()" [disabled]="scanning">Scan</button>
+  </div>
+
+  <div class="prices-part">
+    <div *ngIf="status" class="status">
+      <div class="status-inner">
+        {{status}}
+      </div>
+    </div>
+
+    <div *ngIf="!status" class="prices">
+      <div *ngFor="let price of prices" class="price-outer">
+        <div class="price">
+          <div class="price-text">
+            {{price.amount | number}} {{price.currency}}
+          </div>
+          <div class="price-exchange" *ngIf="price.conversion">
+            (≈ {{price.conversion | number}} USD)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
